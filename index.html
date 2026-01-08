@@ -40,11 +40,13 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .icon {
-            font-size: 4em;
-            margin-bottom: 15px;
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
             display: block;
-            filter: drop-shadow(0 4px 12px rgba(255, 149, 0, 0.3));
+            border-radius: 27%;
+            box-shadow: 0 8px 24px rgba(255, 149, 0, 0.3), 0 0 60px rgba(255, 149, 0, 0.15);
         }
         
         h1 {
@@ -328,106 +330,120 @@
         /* Desktop / Mac (1025px+) */
         @media (min-width: 1025px) {
             body {
-                padding: 60px;
+                padding: 40px;
             }
             
             .container {
-                max-width: 1080px;
-                padding: 60px 70px;
-                margin: 80px auto;
-                border-radius: 28px;
+                max-width: 1200px;
+                padding: 50px 60px;
+                margin: 50px auto;
+                border-radius: 24px;
             }
             
             .header {
-                margin-bottom: 60px;
-                padding-bottom: 50px;
+                margin-bottom: 45px;
+                padding-bottom: 35px;
             }
             
             .icon {
-                font-size: 6em;
-                margin-bottom: 25px;
+                font-size: 4.5em;
+                margin-bottom: 18px;
             }
             
             h1 {
-                font-size: 4.5em;
-                margin-bottom: 20px;
-                letter-spacing: -1px;
+                font-size: 3.2em;
+                margin-bottom: 12px;
+                letter-spacing: -0.8px;
             }
             
             .tagline {
-                font-size: 1.4em;
-                max-width: 600px;
+                font-size: 1.2em;
+                max-width: 700px;
                 margin: 0 auto;
             }
             
             h2 {
-                font-size: 2em;
-                margin-top: 60px;
-                margin-bottom: 30px;
+                font-size: 1.75em;
+                margin-top: 45px;
+                margin-bottom: 24px;
             }
             
             .faq-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 28px;
+                gap: 22px;
             }
             
             .faq-item {
-                padding: 32px;
+                padding: 26px;
             }
             
             .faq-item:hover {
-                transform: translateY(-6px);
+                transform: translateY(-4px);
             }
             
             .faq-item strong {
-                font-size: 1.2em;
-                margin-bottom: 16px;
+                font-size: 1.1em;
+                margin-bottom: 12px;
             }
             
             .faq-item p {
-                font-size: 1.05em;
-                line-height: 1.7;
+                font-size: 1em;
+                line-height: 1.65;
             }
             
             .contact-box {
-                padding: 50px;
-                margin: 50px 0;
+                padding: 35px;
+                margin: 35px 0;
             }
             
             .contact-box p {
-                font-size: 1.25em;
-                margin-bottom: 18px;
+                font-size: 1.1em;
+                margin-bottom: 14px;
             }
             
             .contact-box a {
-                font-size: 1.3em;
-                padding: 18px 40px;
+                font-size: 1.15em;
+                padding: 14px 32px;
             }
             
             .info-section {
-                padding: 32px;
+                padding: 26px;
             }
             
             .info-section p {
-                font-size: 1.05em;
-                line-height: 1.7;
+                font-size: 1em;
+                line-height: 1.65;
             }
             
             .features-grid {
-                gap: 14px;
+                gap: 12px;
                 justify-content: center;
             }
             
             .feature-badge {
-                font-size: 1em;
-                padding: 10px 20px;
+                font-size: 0.95em;
+                padding: 9px 18px;
             }
         }
         
         /* Ultra-wide displays (1440px+) */
         @media (min-width: 1440px) {
             .container {
-                max-width: 1200px;
+                max-width: 1400px;
+                padding: 55px 70px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+            
+            h1 {
+                font-size: 3.5em;
+            }
+            
+            .tagline {
+                font-size: 1.25em;
             }
         }
     </style>
