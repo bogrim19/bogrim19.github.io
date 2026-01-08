@@ -5,124 +5,506 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moon Codex Support</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            background: #000000;
             min-height: 100vh;
             padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+        
         .container {
-            max-width: 700px;
+            max-width: 680px;
             margin: 40px auto;
-            background: white;
+            background: rgba(28, 28, 30, 0.95);
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(255, 149, 0, 0.3));
+        }
+        
         h1 {
-            color: #667eea;
+            color: #FF9500;
             margin-bottom: 10px;
             font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
+        
+        .tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+        
         h2 {
-            color: #764ba2;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            color: #FF9500;
+            margin-top: 40px;
+            margin-bottom: 20px;
             font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }
+        
         p {
             margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.85);
         }
+        
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+        
         .faq-item {
-            margin-bottom: 25px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            padding: 24px;
+            background: rgba(48, 48, 50, 0.6);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
         }
+        
+        .faq-item:hover {
+            background: rgba(58, 58, 60, 0.7);
+            border-color: rgba(255, 149, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(255, 149, 0, 0.1);
+        }
+        
         .faq-item strong {
-            color: #667eea;
+            color: #FF9500;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
+        
+        .faq-item p {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+        }
+        
         a {
-            color: #667eea;
+            color: #FF9500;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
+        
         a:hover {
-            text-decoration: underline;
+            opacity: 0.7;
         }
+        
         .contact-box {
-            background: #667eea;
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.15) 0%, rgba(255, 149, 0, 0.05) 100%);
             color: white;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 14px;
             text-align: center;
             margin: 30px 0;
+            border: 1px solid rgba(255, 149, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(255, 149, 0, 0.15);
         }
+        
+        .contact-box p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        
         .contact-box a {
-            color: white;
-            font-weight: bold;
-            font-size: 1.2em;
+            color: #FF9500;
+            font-weight: 600;
+            font-size: 1.15em;
+            display: inline-block;
+            padding: 14px 28px;
+            background: rgba(255, 149, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 8px;
+            border: 1px solid rgba(255, 149, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-box a:hover {
+            background: rgba(255, 149, 0, 0.25);
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 149, 0, 0.2);
+        }
+        
+        .info-section {
+            background: rgba(48, 48, 50, 0.4);
+            padding: 24px;
+            border-radius: 14px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .info-section p {
+            margin-bottom: 0;
+        }
+        
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            background: rgba(255, 149, 0, 0.15);
+            color: #FF9500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid rgba(255, 149, 0, 0.2);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .feature-badge:hover {
+            background: rgba(255, 149, 0, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile optimized (default) */
+        @media (max-width: 767px) {
+            body {
+                padding: 16px;
+            }
+            
+            .container {
+                padding: 24px;
+                margin: 20px auto;
+                border-radius: 16px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .icon {
+                font-size: 3em;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+                padding-bottom: 24px;
+            }
+            
+            .tagline {
+                font-size: 1em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+                margin-top: 35px;
+            }
+            
+            .faq-item {
+                padding: 20px;
+            }
+            
+            .contact-box {
+                padding: 24px;
+            }
+            
+            .contact-box a {
+                font-size: 1.05em;
+                padding: 12px 24px;
+            }
+            
+            .feature-badge {
+                font-size: 0.85em;
+                padding: 6px 14px;
+            }
+        }
+        
+        /* iPad / Tablet (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                padding: 40px;
+            }
+            
+            .container {
+                max-width: 880px;
+                padding: 50px;
+                margin: 60px auto;
+                border-radius: 24px;
+            }
+            
+            .header {
+                margin-bottom: 50px;
+                padding-bottom: 40px;
+            }
+            
+            .icon {
+                font-size: 5em;
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 3.5em;
+                margin-bottom: 15px;
+            }
+            
+            .tagline {
+                font-size: 1.3em;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+                margin-top: 50px;
+                margin-bottom: 25px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .faq-item {
+                padding: 28px;
+            }
+            
+            .faq-item strong {
+                font-size: 1.15em;
+                margin-bottom: 14px;
+            }
+            
+            .contact-box {
+                padding: 40px;
+                margin: 40px 0;
+            }
+            
+            .contact-box p {
+                font-size: 1.15em;
+                margin-bottom: 15px;
+            }
+            
+            .contact-box a {
+                font-size: 1.25em;
+                padding: 16px 36px;
+            }
+            
+            .features-grid {
+                gap: 12px;
+            }
+            
+            .feature-badge {
+                font-size: 0.95em;
+                padding: 9px 18px;
+            }
+        }
+        
+        /* Desktop / Mac (1025px+) */
+        @media (min-width: 1025px) {
+            body {
+                padding: 60px;
+            }
+            
+            .container {
+                max-width: 1080px;
+                padding: 60px 70px;
+                margin: 80px auto;
+                border-radius: 28px;
+            }
+            
+            .header {
+                margin-bottom: 60px;
+                padding-bottom: 50px;
+            }
+            
+            .icon {
+                font-size: 6em;
+                margin-bottom: 25px;
+            }
+            
+            h1 {
+                font-size: 4.5em;
+                margin-bottom: 20px;
+                letter-spacing: -1px;
+            }
+            
+            .tagline {
+                font-size: 1.4em;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            h2 {
+                font-size: 2em;
+                margin-top: 60px;
+                margin-bottom: 30px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+            
+            .faq-item {
+                padding: 32px;
+            }
+            
+            .faq-item:hover {
+                transform: translateY(-6px);
+            }
+            
+            .faq-item strong {
+                font-size: 1.2em;
+                margin-bottom: 16px;
+            }
+            
+            .faq-item p {
+                font-size: 1.05em;
+                line-height: 1.7;
+            }
+            
+            .contact-box {
+                padding: 50px;
+                margin: 50px 0;
+            }
+            
+            .contact-box p {
+                font-size: 1.25em;
+                margin-bottom: 18px;
+            }
+            
+            .contact-box a {
+                font-size: 1.3em;
+                padding: 18px 40px;
+            }
+            
+            .info-section {
+                padding: 32px;
+            }
+            
+            .info-section p {
+                font-size: 1.05em;
+                line-height: 1.7;
+            }
+            
+            .features-grid {
+                gap: 14px;
+                justify-content: center;
+            }
+            
+            .feature-badge {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+        
+        /* Ultra-wide displays (1440px+) */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🌙 Moon Codex Support</h1>
-        <p>Welcome! Find answers to common questions below or reach out directly.</p>
+        <div class="header">
+            <span class="icon">🌙</span>
+            <h1>Moon Codex</h1>
+            <p class="tagline">Precise lunar tracking for astrologers and moon enthusiasts</p>
+        </div>
 
         <div class="contact-box">
-            <p>Need help? Contact us:</p>
-            <a href="mailto:bogdanbarbus98@gmail.com">bogdanbarbus98@gmail.com</a>
+            <p>Questions or feedback?</p>
+            <a href="mailto:bogdan.barbus@icloud.com">bogdan.barbus@icloud.com</a>
         </div>
 
         <h2>Frequently Asked Questions</h2>
 
-        <div class="faq-item">
-            <strong>Q: How do I view a specific date?</strong>
-            <p>A: Tap the "Date" tab at the bottom and use the slider to navigate to any date from 1900-2100.</p>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>How do I view a specific date?</strong>
+                <p>Tap the "Date" tab at the bottom and use the slider to navigate to any date from 1900-2100. Swipe through centuries of lunar data at your fingertips.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>What does VOC (Void of Course) mean?</strong>
+                <p>The Moon is Void of Course between its last major aspect in a zodiac sign and when it enters the next sign. Many astrologers consider this period important for timing activities and decision-making—some traditions suggest avoiding major decisions or new ventures during VOC periods.</p>
+                <p style="margin-top: 10px; margin-bottom: 0;"><a href="https://www.astro-seek.com/moon-void-of-course-calendar" target="_blank" rel="noopener noreferrer">Learn more about VOC on Astro-Seek →</a></p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Does this app require internet?</strong>
+                <p>No! All 200 years of astronomical data is pre-calculated and stored locally on your device. Moon Codex works perfectly offline—no internet connection needed, ever.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>How accurate is the moon data?</strong>
+                <p>Moon Codex uses Swiss Ephemeris calculations—the same professional-grade astronomical library used by astronomers and astrologers worldwide. Accurate to within ±1 minute for all phase transitions, sign changes, and VOC periods.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>How do I add widgets to my home screen?</strong>
+                <p>Long-press anywhere on your home screen → tap the "+" icon (top left) → search "Moon Codex" → select your preferred widget size → tap "Add Widget". Available in small, medium, and large sizes.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Why does the moon look different than what I see outside?</strong>
+                <p>The moon's visual appearance varies based on your location, viewing angle, and atmospheric conditions. Moon Codex shows the astronomical phase, which is universal and scientifically accurate regardless of where you are on Earth.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Can I suggest new features?</strong>
+                <p>Absolutely! I'm always looking to improve Moon Codex. Send your ideas and feature requests to the email above—I read every message.</p>
+            </div>
         </div>
 
-        <div class="faq-item">
-            <strong>Q: What does VOC (Void of Course) mean?</strong>
-            <p>A: The Moon is Void of Course between its last major aspect in a zodiac sign and when it enters the next sign. Many astrologers consider this period important for timing activities.</p>
-        </div>
-
-        <div class="faq-item">
-            <strong>Q: Does this app require internet?</strong>
-            <p>A: No! All 200 years of astronomical data is pre-calculated and stored locally on your device. Moon Codex works perfectly offline.</p>
-        </div>
-
-        <div class="faq-item">
-            <strong>Q: How accurate is the moon data?</strong>
-            <p>A: Moon Codex uses professional astronomical calculations accurate to within ±1 minute for all phase transitions, sign changes, and VOC periods.</p>
-        </div>
-
-        <div class="faq-item">
-            <strong>Q: How do I add widgets to my home screen?</strong>
-            <p>A: Long-press anywhere on your home screen → tap the "+" icon (top left) → search "Moon Codex" → select your preferred widget size → tap "Add Widget".</p>
-        </div>
-
-        <div class="faq-item">
-            <strong>Q: Why does the moon look different than what I see outside?</strong>
-            <p>A: The moon's visual appearance varies based on your location and viewing angle. Moon Codex shows the astronomical phase, which is universal and scientifically accurate.</p>
-        </div>
-
-        <div class="faq-item">
-            <strong>Q: Can I suggest new features?</strong>
-            <p>A: Absolutely! We'd love to hear your ideas. Send feature requests to our email above.</p>
+        <h2>Features</h2>
+        <div class="features-grid">
+            <span class="feature-badge">200 Years of Data</span>
+            <span class="feature-badge">100% Offline</span>
+            <span class="feature-badge">SwiftUI Widgets</span>
+            <span class="feature-badge">Swiss Ephemeris</span>
+            <span class="feature-badge">VOC Tracking</span>
+            <span class="feature-badge">Phase Precision</span>
         </div>
 
         <h2>Privacy</h2>
-        <p>Moon Codex respects your privacy. We do not collect, store, or transmit any personal data. All calculations happen locally on your device.</p>
+        <div class="info-section">
+            <p>Moon Codex respects your privacy completely. I don't collect, store, or transmit any personal data. No analytics, no tracking, no cloud services. All calculations happen locally on your device. Your data stays yours.</p>
+        </div>
 
         <h2>About</h2>
-        <p>Moon Codex provides precise lunar tracking for astrologers, gardeners, and anyone interested in lunar cycles. Our data spans 200 years and works entirely offline.</p>
+        <div class="info-section">
+            <p>Moon Codex was built by an iOS developer passionate about astronomy and astrology. It provides precise lunar tracking for astrologers, gardeners, and anyone interested in lunar cycles. The app features 200 years of pre-calculated astronomical data (1900-2100) and works entirely offline using professional-grade Swiss Ephemeris calculations.</p>
+        </div>
 
     </div>
 </body>
 </html>
-```
